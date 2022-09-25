@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 const arrGlasses = [
-  { id: "G1", src: "./Image/v1.png", virtualImg: "./Image/v1.png", brand: "Armani Exchange", name: "Bamboo wood", color: "Brown", price: 150, description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ea voluptates officiis? " },
+  { id: "G1", src: "./Image/v1.png", virtualImg: "./Image/v1.png", brand: "Armani Exchange", name: "Bamboo wood", color: "Brown", price: 150, description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum atque omnis tempore necessitatibus?" },
   { id: "G2", src: "./Image/v2.png", virtualImg: "./Image/v2.png", brand: "Arnette", name: "American flag", color: "American flag", price: 150, description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. In assumenda earum eaque doloremque, tempore distinctio." },
   { id: "G3", src: "./Image/v3.png", virtualImg: "./Image/v3.png", brand: "Burberry", name: "Belt of Hippolyte", color: "Blue", price: 100, description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit." },
   { id: "G4", src: "./Image/v4.png", virtualImg: "./Image/v4.png", brand: "Coarch", name: "Cretan Bull", color: "Red", price: 100, description: "In assumenda earum eaque doloremque, tempore distinctio." },
@@ -13,15 +13,28 @@ const arrGlasses = [
 ];
 
 
-
+let {id, src, virtualImg, name, description} = arrGlasses;
 
 export default class ThuKinh extends Component {
 
   state = {
-    virImg : './Image/v1.png',
+    virImg : '',
     virName: '',
-    virInfo : ''
+    virDes : ''
   };
+
+  virtualGlass = (src, name, description) => {
+    console.log(src)
+    let virImgNew = src;
+    let virNameNew = name;
+    let virDesNew = description;
+    console.log(virImgNew)
+    this.setState ({
+      virImg : virImgNew,
+      virName : virNameNew,
+      virDes : virDesNew
+    })
+  }
 
   render() {
     return (
@@ -35,8 +48,10 @@ export default class ThuKinh extends Component {
         <div className=' model__right'>
         <img src={this.state.virImg} alt="" />
           <div className="info">
-            <h1>{this.state.virName}</h1>
-            <p>{this.state.virInfo}</p>
+            <div className="content">
+            <h2>{this.state.virName}</h2>
+            <p>{this.state.virDes}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -44,10 +59,8 @@ export default class ThuKinh extends Component {
         <div className='glasses d-flex flex-wrap'>
           {arrGlasses.map((item)=> {
             return <div className="col-2" key={item.id}>
-            <button className='w-75' onClick={(e)=> {
-              this.setState({
-                
-              })
+            <button className='w-75' onClick={()=> {
+              this.virtualGlass(item.src, item.name, item.description);
             }}>
                   <img src={item.src} alt="..." className='w-100' />
               </button>
