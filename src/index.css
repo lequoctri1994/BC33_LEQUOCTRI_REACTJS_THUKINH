@@ -1,0 +1,33 @@
+.model__right {
+    background-image: url(../build/Image/model.jpg);
+    width: 20%;
+    background-position: center top;
+    background-size: cover;
+    height: 500px;
+    position: relative;
+}
+
+.model__left {
+    background-image: url(../build/Image/model.jpg);
+    width: 20%;
+    background-position: center top;
+    background-size: cover;
+    height: 500px;
+}
+
+.model__right img {
+    width: 60%;
+    position: absolute;
+    top: 26%;
+    left: 20%;
+}
+
+.info {
+    background-color: rgba(184, 58, 58, 0.667);
+    position: absolute;
+    top: 76%;
+}
+
+.glasses {
+    padding-bottom: 112px;
+}
